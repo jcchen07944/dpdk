@@ -1,0 +1,8 @@
+DPDK_22 {
+	global:
+
+	rte_platform_addr_cmp;
+	rte_platform_device_name;
+
+	local: *;
+};

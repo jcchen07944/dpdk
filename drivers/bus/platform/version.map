@@ -1,0 +1,13 @@
+DPDK_22 {
+	global:
+
+	rte_platform_get_sysfs_path;
+	rte_platform_map_device;
+	rte_platform_read_config;
+	rte_platform_register;
+	rte_platform_unmap_device;
+	rte_platform_unregister;
+	rte_platform_write_config;
+
+	local: *;
+};
