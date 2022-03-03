@@ -70,6 +70,11 @@ static int eth_rtk_platform_probe(struct rte_platform_driver *drv __rte_unused,
 	eth_dev->tx_pkt_prepare = rtk_prep_pkts;
 
 	hw = eth_dev->data->dev_private;
+	hw->hw_addr = (void *)dev->mem_resource[0].addr;
+	RTE_LOG(DEBUG, EAL, "%s:%d Read REG = %x\n", __func__, __LINE__,
+				RTK_READ_REG(hw, 0x020002B0));
+	//RTK_WRITE_REG(hw, 0x020002B0, 0xA0150B88);
+
 	
 	// Read MAC address from hardware, save to hw & eth_dev
 	// eth_dev->data->mac_addrs = rte_zmalloc("rtk", RTE_ETHER_ADDR_LEN *
