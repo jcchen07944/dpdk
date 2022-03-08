@@ -1,0 +1,16 @@
+[binaries]
+c = 'rtk-ms-3.0.6-linux-gcc'
+cpp = 'rtk-ms-3.0.6-linux-cpp'
+ar = 'rtk-ms-3.0.6-linux-gcc-ar'
+strip = 'rtk-ms-3.0.6-linux-strip'
+pkgconfig = 'rtk-ms-3.0.6-linux-pkg-config'
+pcap-config = ''
+
+[host_machine]
+system = 'linux'
+cpu_family = 'aarch64'
+cpu = 'armv8-a'
+endian = 'little'
+
+[properties]
+platform = 'rtl9311b'

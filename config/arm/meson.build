@@ -38,7 +38,7 @@ implementer_generic = {
     ],
     'part_number_config': {
         'generic': {
-            'march': 'armv8-a',
+            'march': 'armv8.2-a',
             'march_features': ['crc'],
             'compiler_options': ['-moutline-atomics']
         },
@@ -218,6 +218,23 @@ implementer_qualcomm = {
     }
 }
 
+implementer_realtek = {
+    'description': 'Realtek',
+    'flags': [
+        ['RTE_MACHINE', '"armv8a"'],
+        ['RTE_USE_C11_MEM_MODEL', true],
+        ['RTE_MAX_LCORE', 256],
+        ['RTE_MAX_NUMA_NODES', 1]
+    ],
+    'part_number_config': {
+        '0x1': {
+            'march': 'armv8.2-a',
+            'march_features': ['crc'],
+            'compiler_options': ['-moutline-atomics']
+        }
+    }
+}
+
 ## Arm implementers (ID from MIDR in Arm Architecture Reference Manual)
 implementers = {
     'generic': implementer_generic,
@@ -225,7 +242,8 @@ implementers = {
     '0x43': implementer_cavium,
     '0x48': implementer_hisilicon,
     '0x50': implementer_ampere,
-    '0x51': implementer_qualcomm
+    '0x51': implementer_qualcomm,
+    '0x60': implementer_realtek
 }
 
 # SoC specific armv8 flags have the highest priority
@@ -370,6 +388,12 @@ soc_thunderxt88 = {
     'part_number': '0xa1'
 }
 
+soc_rtl9311b = {
+    'description': 'Realtek RTL9311B',
+    'implementer': '0x60',
+    'part_number': '0x1'
+}
+
 '''
 Start of SoCs list
 generic:         Generic un-optimized build for armv8 aarch64 execution mode.
@@ -389,6 +413,7 @@ octeontx2:       Marvell OCTEON TX2
 stingray:        Broadcom Stingray
 thunderx2:       Marvell ThunderX2 T99
 thunderxt88:     Marvell ThunderX T88
+rtl9311b:        Realtek RTL9311B
 End of SoCs list
 '''
 # The string above is included in the documentation, keep it in sync with the
@@ -410,7 +435,8 @@ socs = {
     'octeontx2': soc_octeontx2,
     'stingray': soc_stingray,
     'thunderx2': soc_thunderx2,
-    'thunderxt88': soc_thunderxt88
+    'thunderxt88': soc_thunderxt88,
+    'rtl9311b': soc_rtl9311b
 }
 
 dpdk_conf.set('RTE_ARCH_ARM', 1)
